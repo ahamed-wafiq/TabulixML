@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Distribution / packaging / build
+dist/
+build/
+*.egg-info/
+src/*.egg-info/
+.eggs/
+
+# Unit test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.env
+.env.*
+.venv
+.venv/
+env/
+venv/
+ENV/
+
+# Secrets, credentials & tokens
+*.pem
+*.key
+*.secret
+*.token
+credentials.json
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Runtime generated data & model artifacts
+*.pkl
+*.joblib
+eda_output/
+*.html
+
+# OS files
+.DS_Store
+Thumbs.db
