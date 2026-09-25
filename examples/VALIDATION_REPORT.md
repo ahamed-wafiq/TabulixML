@@ -1,16 +1,16 @@
-# DataCraft v1.0 Real-World Validation & Quality Report
+# TabulixML v1.0 Real-World Validation & Quality Report
 
 **Document Status**: Final  
 **Date**: September 2026  
-**Target Release**: DataCraft v1.0.0 General Availability  
+**Target Release**: TabulixML v1.0.0 General Availability  
 
 ---
 
 ## 1. Executive Summary
 
-This report documents the empirical validation of the **DataCraft v1.0.0** toolkit on six diverse, realistic, and previously unseen tabular datasets, as well as an eleven-scenario edge-case stress test. 
+This report documents the empirical validation of the **TabulixML v1.0.0** toolkit on six diverse, realistic, and previously unseen tabular datasets, as well as an eleven-scenario edge-case stress test. 
 
-The validation confirmed that DataCraft is:
+The validation confirmed that TabulixML is:
 1. **Reliable & Consistent**: Every public method across `AutoClean`, `AutoEDA`, `AutoPrep`, and `AutoML` operates deterministically and returns structured Python objects alongside human-readable terminal output.
 2. **Leak-Free**: Feature preprocessing pipelines (imputation, scaling, one-hot encoding) are fitted strictly on training splits and cross-validation folds.
 3. **Safe by Design**: Caller DataFrames are never mutated in place. Constant columns and extreme outliers are flagged with clear warnings rather than silently deleted.
@@ -127,7 +127,7 @@ The test harness verified eleven edge cases in `examples/real_world_validation.p
 
 ---
 
-## 8. Recommended Improvements for DataCraft v1.1
+## 8. Recommended Improvements for TabulixML v1.1
 
 *(Note: In accordance with project instructions, these recommendations are documented for future development and are NOT implemented in v1.0).*
 

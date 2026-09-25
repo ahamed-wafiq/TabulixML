@@ -1,5 +1,5 @@
 """
-tests/test_eda.py -- Comprehensive pytest suite for datacraft.AutoEDA
+tests/test_eda.py -- Comprehensive pytest suite for tabulixml.AutoEDA
 
 Tests:
   - Instantiation & validation (non-DataFrame, empty DataFrame)
@@ -16,7 +16,7 @@ import os
 import numpy as np
 import pandas as pd
 import pytest
-from datacraft import AutoEDA
+from tabulixml import AutoEDA
 
 
 # ============================================================================
@@ -296,7 +296,7 @@ class TestEDAReport:
         rep = eda.report(print_report=True)
 
         assert isinstance(rep, str)
-        assert "DataCraft -- AutoEDA Report" in rep
+        assert "TabulixML -- AutoEDA Report" in rep
         assert "Dataset Shape" in rep
         assert "Numerical Features Summary" in rep
         assert "Categorical Features Summary" in rep
@@ -304,7 +304,7 @@ class TestEDAReport:
 
         # Verify stdout
         captured = capsys.readouterr().out
-        assert "DataCraft -- AutoEDA Report" in captured
+        assert "TabulixML -- AutoEDA Report" in captured
 
     def test_report_print_false_suppresses_stdout(self, sample_df, capsys):
         eda = AutoEDA(sample_df)

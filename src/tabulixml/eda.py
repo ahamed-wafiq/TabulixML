@@ -1,5 +1,5 @@
 """
-src/datacraft/eda.py -- AutoEDA Module for DataCraft
+src/tabulixml/eda.py -- AutoEDA Module for TabulixML
 
 Provides fast, read-only exploratory data analysis for tabular datasets:
   - inspect()     : Basic dimensions, column names, data types, missing values,
@@ -14,7 +14,7 @@ Provides fast, read-only exploratory data analysis for tabular datasets:
 
 Guarantees:
   - AutoEDA is strictly read-only and NEVER modifies the caller's DataFrame.
-  - Uses pandas and numpy for primary analysis and reuses existing DataCraft
+  - Uses pandas and numpy for primary analysis and reuses existing TabulixML
     detection logic for consistency across AutoClean and AutoEDA.
 """
 
@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from datacraft.cleaner import AutoClean
+from tabulixml.cleaner import AutoClean
 
 
 def _sanitize_name(name: Any) -> str:
@@ -55,7 +55,7 @@ class AutoEDA:
     Examples
     --------
     >>> import pandas as pd
-    >>> from datacraft import AutoEDA
+    >>> from tabulixml import AutoEDA
     >>> df = pd.DataFrame({"age": [25, 30, None, 45], "score": [85.0, 90.0, 88.0, 92.0]})
     >>> eda = AutoEDA(df)
     >>> info = eda.inspect()
@@ -421,7 +421,7 @@ class AutoEDA:
 
         lines = [
             sep,
-            "  DataCraft -- AutoEDA Report",
+            "  TabulixML -- AutoEDA Report",
             sep,
             f"  Dataset Shape   : {insp['rows']} rows x {insp['column_count']} columns",
             f"  Duplicate Rows  : {insp['duplicates']} ({insp['duplicate_percentage']}%)",
@@ -791,7 +791,7 @@ class AutoEDA:
     def save_report(
         self,
         filepath: str = "eda_report.html",
-        title: str = "DataCraft AutoEDA Report",
+        title: str = "TabulixML AutoEDA Report",
     ) -> str:
         """
         Generate and save a standalone, self-contained HTML EDA report.
@@ -811,7 +811,7 @@ class AutoEDA:
         ----------
         filepath : str, default "eda_report.html"
             Target path to write the standalone HTML file.
-        title : str, default "DataCraft AutoEDA Report"
+        title : str, default "TabulixML AutoEDA Report"
             Header title for the generated report.
 
         Returns
@@ -1246,7 +1246,7 @@ class AutoEDA:
     <header>
       <div class="header-title">
         <h1>{html.escape(title)}</h1>
-        <p>Generated on {now_str} &bull; DataCraft Automated EDA</p>
+        <p>Generated on {now_str} &bull; TabulixML Automated EDA</p>
       </div>
       <div class="header-badge">
         <span>{n_rows:,} rows &times; {n_cols:,} columns</span>
@@ -1353,7 +1353,7 @@ class AutoEDA:
     </div>
 
     <footer>
-      DataCraft AutoEDA &bull; Lightweight, transparent, deterministic tabular analysis
+      TabulixML AutoEDA &bull; Lightweight, transparent, deterministic tabular analysis
     </footer>
   </div>
 </body>

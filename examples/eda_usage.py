@@ -1,5 +1,5 @@
 """
-examples/eda_usage.py -- AutoEDA Usage Demonstration for DataCraft
+examples/eda_usage.py -- AutoEDA Usage Demonstration for TabulixML
 
 Demonstrates the read-only exploratory data analysis module (AutoEDA):
   1. inspect()     : Dimensions, data types, missing values, duplicates
@@ -20,7 +20,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 import numpy as np
 import pandas as pd
-from datacraft import AutoEDA
+from tabulixml import AutoEDA
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
     df = pd.DataFrame(data)
 
     print("=" * 70)
-    print("  DataCraft AutoEDA Demonstration")
+    print("  TabulixML AutoEDA Demonstration")
     print("=" * 70)
     print("\nOriginal DataFrame (first 5 rows):")
     print(df.head())

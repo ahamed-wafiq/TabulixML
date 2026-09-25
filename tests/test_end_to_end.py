@@ -1,5 +1,5 @@
 """
-tests/test_end_to_end.py -- End-to-End Workflow, API Consistency & Robustness Tests for DataCraft
+tests/test_end_to_end.py -- End-to-End Workflow, API Consistency & Robustness Tests for TabulixML
 
 Validates Phase 18:
   1. Complete End-to-End Classification Workflow:
@@ -23,7 +23,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from datacraft import AutoClean, AutoEDA, AutoPrep, AutoML
+from tabulixml import AutoClean, AutoEDA, AutoPrep, AutoML
 
 
 # ==============================================================================

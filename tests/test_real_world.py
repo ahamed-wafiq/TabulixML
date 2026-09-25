@@ -1,5 +1,5 @@
 """
-tests/test_real_world.py -- Realistic Tabular Dataset Tests for DataCraft AutoClean
+tests/test_real_world.py -- Realistic Tabular Dataset Tests for TabulixML AutoClean
 
 Validates AutoClean on four real-world datasets:
   1. Employee dataset: missing values, duplicate rows, categorical columns, dates, numerical outliers
@@ -11,7 +11,7 @@ Validates AutoClean on four real-world datasets:
 import numpy as np
 import pandas as pd
 import pytest
-from datacraft import AutoClean
+from tabulixml import AutoClean
 
 
 # ============================================================================
@@ -146,7 +146,7 @@ class TestRealWorldEmployeeDataset:
 
         cleaner.report()
         out = capsys.readouterr().out
-        assert "DataCraft -- AutoClean Report" in out
+        assert "TabulixML -- AutoClean Report" in out
 
         hist = cleaner.history()
         assert len(hist) > 0

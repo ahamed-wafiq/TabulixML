@@ -1,5 +1,5 @@
 """
-cleaner.py -- Core AutoClean class for DataCraft.
+cleaner.py -- Core AutoClean class for TabulixML.
 
 Only depends on: pandas, numpy, scipy.
 """
@@ -387,7 +387,7 @@ class AutoClean:
         sep = "=" * 60
         thin = "-" * 60
         print(sep)
-        print("  DataCraft -- AutoClean Report")
+        print("  TabulixML -- AutoClean Report")
         print(sep)
 
         # -- Before / After shape ---------------------------------------
@@ -690,7 +690,7 @@ class AutoClean:
         rows, cols = qi["shape"]
 
         print(sep)
-        print("  DataCraft -- AutoClean Preview")
+        print("  TabulixML -- AutoClean Preview")
         print("  (no changes applied yet)")
         print(sep)
         print(f"  DataFrame : {rows} rows x {cols} columns")

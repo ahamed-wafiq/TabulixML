@@ -1,5 +1,5 @@
 """
-src/datacraft/automl.py -- AutoML Module for DataCraft
+src/tabulixml/automl.py -- AutoML Module for TabulixML
 
 Provides lightweight, baseline automated machine learning with leak-free cross-validation
 and controlled hyperparameter tuning:
@@ -62,10 +62,10 @@ from sklearn.model_selection import KFold, RandomizedSearchCV, StratifiedKFold, 
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from datacraft.cleaner import AutoClean
-from datacraft.prep import AutoPrep
+from tabulixml.cleaner import AutoClean
+from tabulixml.prep import AutoPrep
 
-DATACRAFT_VERSION = "1.0.0"
+TABULIXML_VERSION = "1.0.0"
 
 
 class _ClassOrInstanceMethod:
@@ -219,7 +219,7 @@ class AutoML:
     Examples
     --------
     >>> import pandas as pd
-    >>> from datacraft import AutoML
+    >>> from tabulixml import AutoML
     >>> df = pd.DataFrame({
     ...     "age": [25, 30, 35, 40, 45, 50, 55, 60, 65, 70],
     ...     "category": ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"],
@@ -681,7 +681,7 @@ class AutoML:
 
         # Print human-readable summary
         print("=" * 60)
-        print("DataCraft AutoML Inspection")
+        print("TabulixML AutoML Inspection")
         print("=" * 60)
         print(f"Target Column        : {self._target}")
         print(f"Task Type            : {task}")
@@ -715,7 +715,7 @@ class AutoML:
         else:
             models = ["Linear Regression", "Decision Tree", "Random Forest"]
 
-        print("DataCraft AutoML Preview")
+        print("TabulixML AutoML Preview")
         print(f"Task: {task}")
         print("Models:")
         for m in models:
@@ -1547,8 +1547,8 @@ class AutoML:
         )
 
         bundle = {
-            "datacraft_signature": "DATACRAFT_MODEL_BUNDLE",
-            "version": DATACRAFT_VERSION,
+            "tabulixml_signature": "TABULIXML_MODEL_BUNDLE",
+            "version": TABULIXML_VERSION,
             "task": self._task,
             "target": self._target,
             "model": model_class_name,
@@ -1572,7 +1572,7 @@ class AutoML:
     @_ClassOrInstanceMethod
     def load_model(cls_or_self: Any, filepath: Union[str, Path]) -> "AutoML":
         """
-        Load a previously saved DataCraft model.
+        Load a previously saved TabulixML model.
 
         The loaded object is fully configured and ready for prediction without retraining.
         Can be called as an instance method (e.g. `automl.load_model(...)`) or as a class
@@ -1593,7 +1593,7 @@ class AutoML:
         FileNotFoundError
             If the model file does not exist.
         ValueError
-            If the file is corrupt or not a valid DataCraft model bundle.
+            If the file is corrupt or not a valid TabulixML model bundle.
         """
         if isinstance(cls_or_self, type):
             instance = cls_or_self.__new__(cls_or_self)
@@ -1620,13 +1620,13 @@ class AutoML:
 
         if not isinstance(bundle, dict):
             raise ValueError(
-                f"File '{filepath}' is not a valid DataCraft model bundle "
+                f"File '{filepath}' is not a valid TabulixML model bundle "
                 f"(expected dictionary, got {type(bundle).__name__})."
             )
 
         if "pipeline" not in bundle or "task" not in bundle:
             raise ValueError(
-                f"File '{filepath}' is missing essential DataCraft bundle components "
+                f"File '{filepath}' is missing essential TabulixML bundle components "
                 f"('pipeline' or 'task')."
             )
 
@@ -1658,7 +1658,7 @@ class AutoML:
             - 'task': str ('classification' or 'regression')
             - 'target': str
             - 'model': str (e.g. 'RandomForestClassifier')
-            - 'version': str (DataCraft version, e.g. '1.0.0')
+            - 'version': str (TabulixML version, e.g. '1.0.0')
             - 'feature_names': list[str]
             - 'training_timestamp': str or None
             - 'metric': str or None
@@ -1688,7 +1688,7 @@ class AutoML:
             "task": self._task,
             "target": self._target,
             "model": model_class,
-            "version": DATACRAFT_VERSION,
+            "version": TABULIXML_VERSION,
             "feature_names": list(self._feature_names) if self._feature_names else [],
             "training_timestamp": self._training_timestamp,
         }
@@ -1793,7 +1793,7 @@ class AutoML:
 
         if print_report:
             print("=" * 60)
-            print("DataCraft AutoML Held-Out Test Evaluation")
+            print("TabulixML AutoML Held-Out Test Evaluation")
             print(f"Tuned Model with highest CV score : {self._top_tuned_name}")
             print("-" * 60)
             print(results_df.to_string(index=False))
@@ -1907,7 +1907,7 @@ class AutoML:
         sub_sep = "-" * 76
         lines = [
             sep,
-            "DataCraft AutoML Model Comparison",
+            "TabulixML AutoML Model Comparison",
             f"Task: {self.task} | Metric: {self._primary_metric_label} | Cross-Validation: {self._cv} folds",
             sep,
             sorted_results.to_string(index=False),
@@ -1966,7 +1966,7 @@ class AutoML:
 
         lines = [
             "=" * 60,
-            "DataCraft AutoML Report",
+            "TabulixML AutoML Report",
             "=" * 60,
             f"Detected Task   : {task}",
             f"Execution Status: {status}",

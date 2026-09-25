@@ -1,5 +1,5 @@
 """
-examples/basic_usage.py -- Demonstrates DataCraft.AutoClean on a synthetic dataset.
+examples/basic_usage.py -- Demonstrates TabulixML.AutoClean on a synthetic dataset.
 
 Run from the package root:
     python examples/basic_usage.py
@@ -8,7 +8,7 @@ Run from the package root:
 import numpy as np
 import pandas as pd
 
-from datacraft import AutoClean
+from tabulixml import AutoClean
 
 
 # ---------------------------------------------------------------------------

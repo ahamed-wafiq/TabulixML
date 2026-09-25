@@ -1,5 +1,5 @@
 """
-tests/test_cleaner.py -- Comprehensive pytest suite for datacraft.AutoClean
+tests/test_cleaner.py -- Comprehensive pytest suite for tabulixml.AutoClean
 
 Covers:
   Realistic messy DataFrame fixture, column-type detection,
@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from datacraft import AutoClean
+from tabulixml import AutoClean
 
 
 # ===========================================================================

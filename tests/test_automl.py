@@ -1,5 +1,5 @@
 """
-tests/test_automl.py -- Test Suite for DataCraft AutoML Module
+tests/test_automl.py -- Test Suite for TabulixML AutoML Module
 
 Covers:
   - Task detection (classification vs regression)
@@ -25,7 +25,7 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 
-from datacraft import AutoML, AutoPrep
+from tabulixml import AutoML, AutoPrep
 
 
 @pytest.fixture
@@ -138,7 +138,7 @@ class TestAutoMLInspectAndPreview:
         assert "income" in info["numerical_features"]
         assert "department" in info["categorical_features"]
         assert info["class_counts"] is not None
-        assert "DataCraft AutoML Inspection" in out
+        assert "TabulixML AutoML Inspection" in out
 
     def test_inspect_regression_returns_correct_metadata(self, regression_df, capsys):
         automl = AutoML(regression_df, target="price")
@@ -150,7 +150,7 @@ class TestAutoMLInspectAndPreview:
         assert info["class_counts"] is None
         assert "mean" in info["target_distribution"]
         assert "std" in info["target_distribution"]
-        assert "DataCraft AutoML Inspection" in out
+        assert "TabulixML AutoML Inspection" in out
 
     def test_preview_classification(self, classification_df, capsys):
         automl = AutoML(classification_df, target="churn")
@@ -158,7 +158,7 @@ class TestAutoMLInspectAndPreview:
         out = capsys.readouterr().out
 
         assert models == ["Logistic Regression", "Decision Tree", "Random Forest"]
-        assert "DataCraft AutoML Preview" in out
+        assert "TabulixML AutoML Preview" in out
         assert "Task: classification" in out
         assert "* Logistic Regression" in out
         assert "* Decision Tree" in out
@@ -171,7 +171,7 @@ class TestAutoMLInspectAndPreview:
         out = capsys.readouterr().out
 
         assert models == ["Linear Regression", "Decision Tree", "Random Forest"]
-        assert "DataCraft AutoML Preview" in out
+        assert "TabulixML AutoML Preview" in out
         assert "Task: regression" in out
         assert "* Linear Regression" in out
         assert automl.is_fitted is False
@@ -396,7 +396,7 @@ class TestAutoMLCompare:
         sorted_res = automl.compare()
         out = capsys.readouterr().out
 
-        assert "DataCraft AutoML Model Comparison" in out
+        assert "TabulixML AutoML Model Comparison" in out
         assert "Highest-scoring model for F1:" in out
         # Must NOT call the top model "best"
         assert "Best model:" not in out
@@ -438,7 +438,7 @@ class TestAutoMLReport:
         rep = automl.report()
         out = capsys.readouterr().out
 
-        assert "DataCraft AutoML Report" in rep
+        assert "TabulixML AutoML Report" in rep
         assert "Detected Task   : classification" in rep
         assert "not fitted" in rep
 
@@ -448,7 +448,7 @@ class TestAutoMLReport:
         rep = automl.report()
         out = capsys.readouterr().out
 
-        assert "DataCraft AutoML Report" in rep
+        assert "TabulixML AutoML Report" in rep
         assert "evaluate() completed (4-fold CV)" in rep
         assert "Cross-Validation Summary" in rep
         assert "Mean F1" in rep
@@ -460,7 +460,7 @@ class TestAutoMLReport:
         out = capsys.readouterr().out
 
         assert len(out) == 0
-        assert "DataCraft AutoML Report" in rep
+        assert "TabulixML AutoML Report" in rep
 
 
 # ==============================================================================
@@ -735,7 +735,7 @@ class TestAutoMLTuning:
         assert isinstance(test_eval, pd.DataFrame)
         metrics_present = set(test_eval["Metric"].str.lower().unique())
         assert {"accuracy", "precision", "recall", "f1"}.issubset(metrics_present)
-        assert "DataCraft AutoML Held-Out Test Evaluation" in out
+        assert "TabulixML AutoML Held-Out Test Evaluation" in out
 
     def test_evaluate_tuned_regression(self, regression_df, capsys):
         automl = AutoML(
@@ -748,7 +748,7 @@ class TestAutoMLTuning:
         assert isinstance(test_eval, pd.DataFrame)
         metrics_present = set(test_eval["Metric"].unique())
         assert {"MAE", "RMSE", "R²"}.issubset(metrics_present)
-        assert "DataCraft AutoML Held-Out Test Evaluation" in out
+        assert "TabulixML AutoML Held-Out Test Evaluation" in out
 
 
 # ==============================================================================
@@ -977,14 +977,14 @@ class TestAutoMLModelPersistenceAndPrediction:
     def test_load_model_invalid_corrupt_file_raises(self, tmp_path):
         corrupt_file = tmp_path / "corrupt.pkl"
         corrupt_file.write_text("not a pickle file")
-        with pytest.raises(ValueError, match="Failed to load model file|not a valid DataCraft model bundle"):
+        with pytest.raises(ValueError, match="Failed to load model file|not a valid TabulixML model bundle"):
             AutoML.load_model(corrupt_file)
 
     def test_load_model_missing_bundle_keys_raises(self, tmp_path):
         import joblib
         fake_file = tmp_path / "fake.pkl"
         joblib.dump({"some_key": 123}, fake_file)
-        with pytest.raises(ValueError, match="missing essential DataCraft bundle components"):
+        with pytest.raises(ValueError, match="missing essential TabulixML bundle components"):
             AutoML.load_model(fake_file)
 
     def test_predict_with_missing_columns_raises(self, classification_df, tmp_path):

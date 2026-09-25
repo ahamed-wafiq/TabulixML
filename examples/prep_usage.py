@@ -1,5 +1,5 @@
 """
-examples/prep_usage.py -- AutoPrep Usage Demonstration for DataCraft
+examples/prep_usage.py -- AutoPrep Usage Demonstration for TabulixML
 
 Demonstrates the machine learning preprocessing module (AutoPrep):
   1. inspect() : Inspect feature columns, target, detected types, missing/unique counts
@@ -18,12 +18,12 @@ if hasattr(sys.stdout, "reconfigure"):
 
 import numpy as np
 import pandas as pd
-from datacraft import AutoPrep
+from tabulixml import AutoPrep
 
 
 def main():
     print("=" * 70)
-    print("  DataCraft AutoPrep Demonstration")
+    print("  TabulixML AutoPrep Demonstration")
     print("=" * 70)
 
     # 1. Create a realistic training dataset

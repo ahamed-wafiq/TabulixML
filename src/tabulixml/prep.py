@@ -1,5 +1,5 @@
 """
-src/datacraft/prep.py -- AutoPrep Module for DataCraft
+src/tabulixml/prep.py -- AutoPrep Module for TabulixML
 
 Provides leak-free, reproducible machine learning preprocessing with scikit-learn:
   - Column type detection: separates numerical, categorical, datetime, and target.
@@ -28,7 +28,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from datacraft.cleaner import AutoClean
+from tabulixml.cleaner import AutoClean
 
 
 class AutoPrep:
@@ -53,7 +53,7 @@ class AutoPrep:
     Examples
     --------
     >>> import pandas as pd
-    >>> from datacraft import AutoPrep
+    >>> from tabulixml import AutoPrep
     >>> df = pd.DataFrame({
     ...     "age": [25.0, 30.0, None, 45.0, 29.0],
     ...     "city": ["Paris", "London", "Paris", "Berlin", "London"],
@@ -295,7 +295,7 @@ class AutoPrep:
         sub_sep = "-" * 64
         lines = [
             sep,
-            "  DataCraft -- AutoPrep Preview",
+            "  TabulixML -- AutoPrep Preview",
             sep,
             f"  Target Column : {self._target} (kept separate from feature transformations)",
             f"  Train/Test    : test_size={self._test_size}, random_state={self._random_state}",

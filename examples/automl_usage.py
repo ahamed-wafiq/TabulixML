@@ -1,5 +1,5 @@
 """
-examples/automl_usage.py -- DataCraft AutoML Demonstration
+examples/automl_usage.py -- TabulixML AutoML Demonstration
 
 Demonstrates:
   1. Automated task detection (Classification vs Regression).
@@ -16,12 +16,12 @@ Demonstrates:
 
 import numpy as np
 import pandas as pd
-from datacraft import AutoML
+from tabulixml import AutoML
 
 
 def main():
     print("=" * 70)
-    print("DataCraft AutoML End-to-End Workflow Demonstration")
+    print("TabulixML AutoML End-to-End Workflow Demonstration")
     print("=" * 70)
 
     # --------------------------------------------------------------------------
@@ -195,7 +195,7 @@ def main():
 
     automl_reg.report()
 
-    print("\nDone! DataCraft AutoML v1.0 executed cleanly with full pipeline persistence.")
+    print("\nDone! TabulixML AutoML v1.0 executed cleanly with full pipeline persistence.")
 
 
 if __name__ == "__main__":

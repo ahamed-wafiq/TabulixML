@@ -1,4 +1,4 @@
-# DataCraft
+# TabulixML
 
 > **Lightweight, transparent, and deterministic tabular data cleaning for Machine Learning -- built with pure Python, pandas, numpy, and scipy.**
 
@@ -11,10 +11,10 @@
 
 ## Introduction
 
-**DataCraft** is a lightweight Python toolkit designed to streamline the critical first mile of tabular machine learning workflows: data cleaning, quality auditing, and exploratory data analysis.
+**TabulixML** is a lightweight Python toolkit designed to streamline the critical first mile of tabular machine learning workflows: data cleaning, quality auditing, and exploratory data analysis.
 
 ```text
-DataCraft
+TabulixML
 │
 ├── AutoClean
 │   └── Clean the data
@@ -29,7 +29,7 @@ DataCraft
     └── Baseline model training & evaluation
 ```
 
-Unlike opaque AutoML libraries, DataCraft is **transparent and non-destructive**:
+Unlike opaque AutoML libraries, TabulixML is **transparent and non-destructive**:
 - **Immutability First**: It *never* modifies your original DataFrame in place; `clean()` always returns a clean copy, and `AutoEDA` is strictly read-only.
 - **Safety by Design**: It never automatically deletes outliers or drops ambiguous columns without consent.
 - **Explainability**: Every action is proposed upfront via `preview()`, audited in `report()`, and logged step-by-step in `history()`.
@@ -44,7 +44,7 @@ Data practitioners often face two unfavorable extremes:
 1. **Manual Boilerplate**: Writing repetitive, error-prone code for type inference, mode/median calculations, duplicate checks, and outlier flagging for every new dataset.
 2. **Opaque AutoML Tools**: Heavy, black-box libraries that alter datasets silently, drop rows unexpectedly, create hard-to-debug side effects, or pull in hundreds of heavy dependencies.
 
-**DataCraft bridges this gap.** It gives you:
+**TabulixML bridges this gap.** It gives you:
 - An immediate, comprehensive diagnosis of your data quality via `inspect()`.
 - An upfront, safe look at what will change before it happens via `preview()`.
 - Deterministic, configurable cleaning that strictly preserves the original data via `clean()`.
@@ -97,7 +97,7 @@ pip install -e ".[dev]"
 
 ```python
 import pandas as pd
-from datacraft import AutoClean
+from tabulixml import AutoClean
 
 df = pd.DataFrame({
     "Full Name": ["Alice", "Bob", "Charlie", "alice", "Alice"],
@@ -169,7 +169,7 @@ plan = cleaner.preview()
 
 ```text
 ============================================================
-  DataCraft -- AutoClean Preview
+  TabulixML -- AutoClean Preview
   (no changes applied yet)
 ============================================================
   DataFrame : 5 rows x 5 columns
@@ -213,7 +213,7 @@ cleaner.report()
 
 ```text
 ============================================================
-  DataCraft -- AutoClean Report
+  TabulixML -- AutoClean Report
 ============================================================
                   Rows    Cols
   BEFORE             5       5
@@ -271,7 +271,7 @@ cleaner.inspect()
 `AutoEDA` provides fast, read-only exploratory data analysis for tabular datasets without modifying your data.
 
 ```python
-from datacraft import AutoEDA
+from tabulixml import AutoEDA
 
 eda = AutoEDA(df)
 ```
@@ -293,7 +293,7 @@ eda = AutoEDA(df)
 ### AutoEDA Example
 
 ```python
-from datacraft import AutoEDA
+from tabulixml import AutoEDA
 
 eda = AutoEDA(df)
 eda.inspect()
@@ -306,7 +306,7 @@ eda.save_report("eda_report.html")
 
 ```python
 import pandas as pd
-from datacraft import AutoEDA
+from tabulixml import AutoEDA
 
 df = pd.DataFrame({
     "Age": [25.0, 30.0, None, 45.0, 25.0],
@@ -352,7 +352,7 @@ eda.save_report("eda_report.html")
 `AutoPrep` prepares cleaned tabular data for machine learning models using reproducible, leak-free scikit-learn pipelines.
 
 ```python
-from datacraft import AutoPrep
+from tabulixml import AutoPrep
 
 prep = AutoPrep(
     df,
@@ -391,7 +391,7 @@ prep = AutoPrep(
 `AutoML` provides a leak-free, automated baseline modeling workflow. It automatically determines whether the dataset represents a classification or regression task, trains a standard set of baseline models using `AutoPrep` internally, and evaluates them with standard metrics.
 
 ```python
-from datacraft import AutoML
+from tabulixml import AutoML
 
 automl = AutoML(
     df,
@@ -401,10 +401,10 @@ automl = AutoML(
 )
 ```
 
-### DataCraft Architecture
+### TabulixML Architecture
 
 ```text
-                 DataCraft
+                 TabulixML
                      │
        ┌─────────────┼─────────────┐
        ↓             ↓             ↓
@@ -459,7 +459,7 @@ automl = AutoML(
 | `automl.predict(X)` | Generates target predictions using the complete preprocessing + model pipeline (DataFrames, Series, arrays). | `np.ndarray` |
 | `automl.predict_proba(X)` | Generates predicted class probabilities for classification models. | `np.ndarray` |
 | `automl.save_model("model.pkl")` | Persists the entire end-to-end trained pipeline, preprocessing, and metadata using `joblib`. | `str` |
-| `AutoML.load_model("model.pkl")` | Loads a saved DataCraft pipeline ready for production prediction without retraining. | `AutoML` |
+| `AutoML.load_model("model.pkl")` | Loads a saved TabulixML pipeline ready for production prediction without retraining. | `AutoML` |
 | `automl.model_info()` | Returns metadata dictionary including task, target, model class name, version, and timestamp. | `dict[str, Any]` |
 | `automl.fit()` | Trains baseline models on a single train/test split. | `AutoML` |
 | `automl.results()` | Returns evaluation results table (CV fold scores, tuning results, or train/test metrics). | `pd.DataFrame` |
@@ -471,13 +471,13 @@ automl = AutoML(
 
 ## Complete End-to-End Workflow Example
 
-The following example demonstrates the complete DataCraft lifecycle on a raw, messy dataset:
+The following example demonstrates the complete TabulixML lifecycle on a raw, messy dataset:
 
 $$\text{DataFrame} \longrightarrow \text{AutoClean} \longrightarrow \text{AutoEDA} \longrightarrow \text{AutoPrep} \longrightarrow \text{AutoML} \longrightarrow \text{Tune} \longrightarrow \text{Evaluate} \longrightarrow \text{Save} \longrightarrow \text{Load} \longrightarrow \text{Predict}$$
 
 ```python
 import pandas as pd
-from datacraft import AutoClean, AutoEDA, AutoPrep, AutoML
+from tabulixml import AutoClean, AutoEDA, AutoPrep, AutoML
 
 # Raw messy dataset with missing values, duplicate rows, and inconsistent categories
 raw_df = pd.DataFrame({
@@ -556,9 +556,9 @@ print("Predicted Probabilities:", probabilities)
 
 ## Limitations
 
-To maintain simplicity, determinism, and zero external runtime overhead, DataCraft focuses on transparent, robust foundations:
+To maintain simplicity, determinism, and zero external runtime overhead, TabulixML focuses on transparent, robust foundations:
 - **Controlled Baselines & Tuning**: Compact hyperparameter spaces optimized for CPU laptops. Does not require heavy distributed clusters or GPUs.
-- **No Deep Learning / AutoDL**: DataCraft is dedicated to tabular ML pipelines.
+- **No Deep Learning / AutoDL**: TabulixML is dedicated to tabular ML pipelines.
 - **No Automated Feature Deletion**: Does not silently drop features without user consent.
 - **No Outlier Deletion**: Outliers are flagged mathematically via IQR, never deleted automatically.
 
@@ -567,9 +567,9 @@ To maintain simplicity, determinism, and zero external runtime overhead, DataCra
 ## Project Structure
 
 ```
-DataCraft/
+TabulixML/
 ├── src/
-│   └── datacraft/
+│   └── tabulixml/
 │       ├── __init__.py              # Package entry point (exports AutoClean, AutoEDA, AutoPrep, AutoML)
 │       ├── cleaner.py               # Core AutoClean implementation
 │       ├── eda.py                   # Core AutoEDA implementation
@@ -589,7 +589,7 @@ DataCraft/
 │   ├── prep_usage.py                # AutoPrep ML preprocessing demonstration
 │   ├── automl_usage.py              # AutoML CV evaluation, tuning, persistence & prediction
 │   ├── real_world_validation.py     # Multi-dataset real-world validation script
-│   └── end_to_end.py                # Complete DataCraft v1.0 end-to-end classification & regression workflow
+│   └── end_to_end.py                # Complete TabulixML v1.0 end-to-end classification & regression workflow
 ├── pyproject.toml                   # Build metadata & dependency configuration
 ├── LICENSE                          # MIT License
 ├── CONTRIBUTING.md                  # Development & contribution guidelines
@@ -608,8 +608,8 @@ DataCraft/
 - **Phase 16 (Completed)**: **Controlled hyperparameter tuning with RandomizedSearchCV** (compact search spaces, leak-free pipelines, tuning results, held-out test evaluation, predict).
 - **Phase 17 (Completed)**: **Model persistence + production-style prediction** (save/load complete preprocessing + model pipelines without retraining, `predict_proba`, `model_info`).
 - **Phase 18 (Completed)**: **AutoML robustness + API cleanup + end-to-end integration** (standardized public API, comprehensive dataset validation, strict reproducibility, zero data leakage tests).
-- **Phase 19 (Completed)**: **DataCraft v1.0 Production Release**—verified public APIs across all 4 modules, complete end-to-end examples, clean PyPI build, 100% test pass rate.
-- **Next: Real-World Benchmarking & User Feedback**: Validate DataCraft across diverse open-source benchmark datasets, evaluate CPU runtimes against established baselines, and collect developer feedback before expanding scope.
+- **Phase 19 (Completed)**: **TabulixML v1.0 Production Release**—verified public APIs across all 4 modules, complete end-to-end examples, clean PyPI build, 100% test pass rate.
+- **Next: Real-World Benchmarking & User Feedback**: Validate TabulixML across diverse open-source benchmark datasets, evaluate CPU runtimes against established baselines, and collect developer feedback before expanding scope.
 - **Future Considerations**:
   - Expanded imputation strategies (constant fills, time-series forward/backward fills).
   - Optional user-approved category harmonization for casing/whitespace variants.
@@ -635,6 +635,6 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for setu
 
 ## License
 
-MIT (c) 2026 DataCraft contributors.
+MIT (c) 2026 TabulixML contributors.
 
 

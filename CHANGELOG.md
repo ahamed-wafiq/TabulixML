@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2026-09-25
 
-### DataCraft v1.0.0 General Availability Release
-First official production release of DataCraft: the lightweight, CPU-friendly, tabular machine learning toolkit covering the complete lifecycle from messy data to production inference.
+### TabulixML v1.0.0 General Availability Release
+First official production release of TabulixML: the lightweight, CPU-friendly, tabular machine learning toolkit covering the complete lifecycle from messy data to production inference.
 
 ### Core Modules & Capabilities
 
@@ -58,7 +58,7 @@ First official production release of DataCraft: the lightweight, CPU-friendly, t
 ## [0.1.0] - 2026-09-24
 
 ### Added
-- Initial DataCraft release
+- Initial release (originally announced as DataCraft)
 - AutoClean tabular data cleaning pipeline
 - Missing-value detection and imputation (mean, median, mode, auto strategies)
 - Duplicate row detection and removal (configurable via `remove_duplicates`)

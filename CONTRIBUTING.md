@@ -1,6 +1,6 @@
-# Contributing to DataCraft
+# Contributing to TabulixML
 
-Thank you for your interest in contributing to **DataCraft**! We welcome contributions that improve reliability, performance, edge-case coverage, and documentation.
+Thank you for your interest in contributing to **TabulixML**! We welcome contributions that improve reliability, performance, edge-case coverage, and documentation.
 
 ---
 
@@ -9,12 +9,12 @@ Thank you for your interest in contributing to **DataCraft**! We welcome contrib
 ### 1. Clone the Project
 Fork and clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/datacraft.git
-cd datacraft
+git clone https://github.com/your-username/tabulixml.git
+cd tabulixml
 ```
 
 ### 2. Install Dependencies
-Create a virtual environment (optional but recommended) and install DataCraft in editable mode along with development dependencies:
+Create a virtual environment (optional but recommended) and install TabulixML in editable mode along with development dependencies:
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate

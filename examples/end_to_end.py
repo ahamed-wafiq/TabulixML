@@ -1,7 +1,7 @@
 """
-examples/end_to_end.py -- Complete End-to-End DataCraft v1.0 Demonstration.
+examples/end_to_end.py -- Complete End-to-End TabulixML v1.0 Demonstration.
 
-Demonstrates the entire DataCraft pipeline from raw messy data to production inference:
+Demonstrates the entire TabulixML pipeline from raw messy data to production inference:
   DataFrame -> AutoClean -> AutoEDA -> AutoPrep -> AutoML -> CV -> Tune -> Evaluate -> Save -> Load -> Predict
 
 Covers both:
@@ -16,7 +16,7 @@ import tempfile
 import numpy as np
 import pandas as pd
 
-from datacraft import AutoClean, AutoEDA, AutoPrep, AutoML
+from tabulixml import AutoClean, AutoEDA, AutoPrep, AutoML
 
 
 # =====================================================================
@@ -113,7 +113,7 @@ def make_housing_dataset(n_samples: int = 120, random_state: int = 42) -> pd.Dat
 
 def run_classification_pipeline():
     print("\n" + "=" * 70)
-    print("  DATACRAFT v1.0 -- END-TO-END CLASSIFICATION PIPELINE")
+    print("  TABULIXML v1.0 -- END-TO-END CLASSIFICATION PIPELINE")
     print("=" * 70)
 
     # Step 1: Create Raw Messy Data
@@ -191,7 +191,7 @@ def run_classification_pipeline():
         print("\n[6] Production Inference with Loaded Model:")
         loaded_automl = AutoML.load_model(model_path)
         info = loaded_automl.model_info()
-        print(f"    - Loaded model: {info['model']} (DataCraft v{info['version']})")
+        print(f"    - Loaded model: {info['model']} (TabulixML v{info['version']})")
 
         # Test inference on raw unseen data (including missing values and novel category)
         sample_raw = pd.DataFrame([{
@@ -212,7 +212,7 @@ def run_classification_pipeline():
 
 def run_regression_pipeline():
     print("\n" + "=" * 70)
-    print("  DATACRAFT v1.0 -- END-TO-END REGRESSION PIPELINE")
+    print("  TABULIXML v1.0 -- END-TO-END REGRESSION PIPELINE")
     print("=" * 70)
 
     # Step 1: Create Messy Regression Dataset
@@ -269,7 +269,7 @@ def run_regression_pipeline():
 
 if __name__ == "__main__":
     print("\n" + "#" * 70)
-    print("  RUNNING DATACRAFT v1.0 COMPLETE END-TO-END DEMONSTRATIONS")
+    print("  RUNNING TABULIXML v1.0 COMPLETE END-TO-END DEMONSTRATIONS")
     print("#" * 70)
 
     run_classification_pipeline()

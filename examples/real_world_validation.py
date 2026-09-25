@@ -1,7 +1,7 @@
 """
-examples/real_world_validation.py -- Comprehensive Real-World & Unseen Dataset Validation for DataCraft v1.0.
+examples/real_world_validation.py -- Comprehensive Real-World & Unseen Dataset Validation for TabulixML v1.0.
 
-Validates the complete DataCraft stack on 6 real-world and unseen tabular datasets:
+Validates the complete TabulixML stack on 6 real-world and unseen tabular datasets:
   1. Employee Dataset (missing values, duplicate rows, casing/whitespace variants, outliers)
   2. Customer Dataset (high cardinality, possible IDs, inconsistent casing, missing values)
   3. Sales Dataset (numerical columns, dates, duplicate transactions, redundant features)
@@ -42,7 +42,7 @@ matplotlib.use("Agg")  # Non-interactive headless backend
 import numpy as np
 import pandas as pd
 
-from datacraft import AutoClean, AutoEDA, AutoPrep, AutoML
+from tabulixml import AutoClean, AutoEDA, AutoPrep, AutoML
 
 
 # ============================================================================
@@ -566,7 +566,7 @@ def run_edge_case_stress_tests():
 
 def main():
     print("#" * 80)
-    print("  DATACRAFT v1.0 REAL-WORLD & UNSEEN DATASET VALIDATION BENCHMARK")
+    print("  TABULIXML v1.0 REAL-WORLD & UNSEEN DATASET VALIDATION BENCHMARK")
     print("#" * 80)
 
     # 1. Employee Dataset (Data hygiene focus)

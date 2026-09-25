@@ -1,6 +1,6 @@
-# DataCraft v1.0 Validation Benchmark Results
+# TabulixML v1.0 Validation Benchmark Results
 
-This document records the empirical validation benchmark results for **DataCraft v1.0** across six real-world and unseen tabular datasets, followed by comprehensive stress tests across eleven edge cases.
+This document records the empirical validation benchmark results for **TabulixML v1.0** across six real-world and unseen tabular datasets, followed by comprehensive stress tests across eleven edge cases.
 
 Validation was conducted on standard CPU hardware running Python 3.12 without external accelerators.
 

@@ -3,14 +3,14 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "datacraft"
+name = "tabulixml"
 version = "1.0.0"
-description = "Lightweight tabular ML data cleaning, exploratory analysis, preprocessing, and automated machine learning toolkit."
+description = "Automated Tabular Machine Learning Toolkit"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
-authors = [{ name = "DataCraft contributors" }]
-keywords = ["data-cleaning", "pandas", "machine-learning", "tabular", "datacraft", "automl", "eda", "preprocessing"]
+authors = [{ name = "TabulixML contributors" }]
+keywords = ["data-cleaning", "pandas", "machine-learning", "tabular", "tabulixml", "automl", "eda", "preprocessing"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -40,7 +40,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["datacraft*"]
+include = ["tabulixml*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

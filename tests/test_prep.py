@@ -1,5 +1,5 @@
 """
-tests/test_prep.py -- Comprehensive pytest suite for datacraft.AutoPrep
+tests/test_prep.py -- Comprehensive pytest suite for tabulixml.AutoPrep
 
 Tests:
   - Instantiation & validation:
@@ -38,7 +38,7 @@ import pandas as pd
 import pytest
 from sklearn.compose import ColumnTransformer
 
-from datacraft import AutoPrep
+from tabulixml import AutoPrep
 
 
 # ============================================================================
@@ -172,7 +172,7 @@ class TestPrepInspectAndPreview:
         assert "datetime" in plan
 
         captured = capsys.readouterr().out
-        assert "DataCraft -- AutoPrep Preview" in captured
+        assert "TabulixML -- AutoPrep Preview" in captured
         assert "Target Column : churn" in captured
         assert "test_size=0.2" in captured
 
