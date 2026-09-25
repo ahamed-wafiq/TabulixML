@@ -21,6 +21,7 @@ htmlcov/
 .env.*
 .venv
 .venv/
+test_venv/
 env/
 venv/
 ENV/

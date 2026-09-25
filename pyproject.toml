@@ -32,6 +32,13 @@ dependencies = [
     "joblib>=1.2",
 ]
 
+[project.urls]
+Homepage = "https://github.com/ahamed-wafiq/TabulixML"
+Documentation = "https://github.com/ahamed-wafiq/TabulixML#readme"
+Repository = "https://github.com/ahamed-wafiq/TabulixML.git"
+Issues = "https://github.com/ahamed-wafiq/TabulixML/issues"
+Changelog = "https://github.com/ahamed-wafiq/TabulixML/blob/main/CHANGELOG.md"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
